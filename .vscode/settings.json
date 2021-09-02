@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"minishell.h": "c",
+		"types.h": "c",
+		"stdio.h": "c",
+		"stdlib.h": "c",
+		"unistd.h": "c",
+		"termcap.h": "c",
+		"fcntl.h": "c"
+	}
+}
