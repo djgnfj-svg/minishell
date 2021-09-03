@@ -18,13 +18,10 @@
 // 	if(data->)
 // }
 
-// static t_cmd *init_cmd()
-// {
-// 	t_cmd *temp;
-// 	temp->cmd = NULL;
-// 	temp->options = NULL;
-// 	return temp;
-// }
+static void init_cmd(char *input, t_data *data)
+{
+	data->cmd = input;
+}
 t_data *parse_data(char *input)
 {
 	// TO-DO 파이프라인을 적용하면 |을 기준으로 명령어를 나눈다. 
@@ -35,7 +32,7 @@ t_data *parse_data(char *input)
 	temp = ft_split(input, '|');
 	i = -1;
 	while (temp[++i])
-		printf("%s\t", temp[i]);
+		init_cmd(temp[i],data);
 	data = NULL;
 	return data;
 	// init_data(data, input);

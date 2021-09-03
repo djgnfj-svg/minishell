@@ -12,17 +12,6 @@
 
 #include "minishell.h"
 
-static void test(char *input)
-{
-	char **temp;
-	temp = ft_split(input, '|');
-	int i = -1;
-	while (temp[++i])
-	{
-		write(1, temp[i], ft_strlen(temp[i]));
-		write(1, "\n", 2);
-	}
-}
 void minishell(char **env)
 {
 	char *temp;

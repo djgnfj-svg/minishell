@@ -22,7 +22,6 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
-# include <termcap.h>
 # include "../libft/libft.h"
 
 typedef struct s_cmd
@@ -38,7 +37,7 @@ typedef struct s_data
 	struct s_data *next;
 }				t_data;
 
-t_data *parse_data(char *input);
-void show_prompt(void);
+t_data		*parse_data(char *input);
+void		show_prompt(void);
 void		handle_signal(int signo);
 #endif
