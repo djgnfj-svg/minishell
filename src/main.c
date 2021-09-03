@@ -6,25 +6,39 @@
 /*   By: ysong <ysong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 04:06:47 by ysong             #+#    #+#             */
-/*   Updated: 2021/09/03 07:17:52 by ysong            ###   ########.fr       */
+/*   Updated: 2021/09/04 01:23:15 by ysong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static void test(char *input)
+{
+	char **temp;
+	temp = ft_split(input, '|');
+	int i = -1;
+	while (temp[++i])
+	{
+		write(1, temp[i], ft_strlen(temp[i]));
+		write(1, "\n", 2);
+	}
+}
 void minishell(char **env)
 {
 	char *temp;
-	t_data data;
-	signal(SIGINT, handle_signal);
-	signal(SIGQUIT, handle_signal);
+	t_data *data;
+	// signal(SIGINT, handle_signal);
+	// signal(SIGQUIT, handle_signal);
 	while(1)
 	{
 		show_prompt();
 		if(get_next_line(0,&temp) > 0)
 		{
+			test(temp);
 			data = parse_data(temp);
-			run_commend(temp, env);
+			(void)data;
+			// printf("%s\n",data->cmd.options);
+			// run_commend(temp, env);
 		}
 	}
 	(void)env;

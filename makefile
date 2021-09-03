@@ -6,7 +6,7 @@
 #    By: ysong <ysong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/02 06:44:16 by ysong             #+#    #+#              #
-#    Updated: 2021/09/02 06:47:12 by ysong            ###   ########.fr        #
+#    Updated: 2021/09/04 01:05:32 by ysong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCDIR		=	src/
-SRC			=	main.c
+SRC			=	main.c show_utils.c signal_utils.c parse_utils.c
 
 # MSRC		=	src/main.c
 
