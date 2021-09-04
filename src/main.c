@@ -31,7 +31,6 @@ void minishell(char **env)
 		}
 	}
 	free(temp);
-	(void)env;
 }
 
 int main(int ac, char **av, char **env)
