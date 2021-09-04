@@ -6,7 +6,7 @@
 #    By: ysong <ysong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/02 06:44:16 by ysong             #+#    #+#              #
-#    Updated: 2021/09/04 01:05:32 by ysong            ###   ########.fr        #
+#    Updated: 2021/09/04 14:14:45 by ysong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,11 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCDIR		=	src/
-SRC			=	main.c show_utils.c signal_utils.c parse_utils.c
+SRC			=	main.c show_utils.c signal_utils.c parse_utils.c \
+				run_commend.c
 
+RUNDIR		=	run/
+RRC			=	run_echo.c run_env.c run_pwd.c
 # MSRC		=	src/main.c
 
 INCLUDE 	= ./includes/
@@ -25,16 +28,23 @@ INCLUDE 	= ./includes/
 LIBDIR = ./libft/
 LIBNAME = libft.a
 
+RRDIR	= $(addprefix $(SRCDIR), $(RUNDIR))
+RRCS	= $(addprefix $(RRDIR), $(RRC))
+
+
 SRCS	= $(addprefix $(SRCDIR), $(SRC))
 
+
 OBJS			= $(SRCS:.c=.o)
+OBJS_RUN		= $(RRCS:.c=.o)
+
 # MOBJS			= $(MSRC:.c=.o)
 
 %.o:		%.c
 			$(CC) $(CFLAGS) -g -I$(INCLUDE) -c $< -o $@
 
-$(NAME):	$(LIBNAME) $(OBJS)
-				$(CC) $(CFLAGS) -g -I$(INCLUDE) -o $(NAME) $(OBJS) $(LIBNAME)
+$(NAME):	$(LIBNAME) $(OBJS) $(OBJS_RUN)
+				$(CC) $(CFLAGS) -g -I$(INCLUDE) -o $(NAME) $(OBJS) $(OBJS_RUN) $(LIBNAME)
 
 $(LIBNAME):
 				@$(MAKE) -C $(LIBDIR) bonus
@@ -42,7 +52,7 @@ $(LIBNAME):
 all:		$(NAME)
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJS) $(OBJS_RUN)
 
 fclean:		clean
 			$(RM) $(NAME) $(LIBNAME)

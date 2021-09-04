@@ -6,7 +6,7 @@
 /*   By: ysong <ysong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 04:06:47 by ysong             #+#    #+#             */
-/*   Updated: 2021/09/04 01:23:15 by ysong            ###   ########.fr       */
+/*   Updated: 2021/09/04 14:06:45 by ysong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ void minishell(char **env)
 		show_prompt();
 		if(get_next_line(0,&temp) > 0)
 		{
-			test(temp);
 			data = parse_data(temp);
-			(void)data;
-			// printf("%s\n",data->cmd.options);
-			// run_commend(temp, env);
+			run_commend(data, env);
+			// write(1, data->cmd->commend, ft_strlen(data->cmd->commend));
+			// write(1, "\n", 2);
+			free(temp);
 		}
 	}
+	free(temp);
 	(void)env;
 }
 
@@ -40,16 +41,3 @@ int main(int ac, char **av, char **env)
 	(void)av;
 	(void)ac;
 } 
-// #include <unistd.h>
-// #include <stdlib.h>
-// int main()
-// {
-// 	char buffer[128];
-// 	int nread;
-// 	nread = read( 0, buffer, 128 );
-// 	if( nread == -1 )
-// 		write( 2, "A read error has occurred\n", 26 );
-// 	if( (write( 1, buffer, nread ) ) != nread ) //1번 (표준출력)으로 write == printf 와 동일한 역할
-// 		write( 2, "A write error has occurred\n", 27 );
-// 	exit(0);
-// }

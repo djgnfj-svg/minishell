@@ -6,7 +6,7 @@
 /*   By: ysong <ysong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 07:17:50 by ysong             #+#    #+#             */
-/*   Updated: 2021/09/04 01:22:10 by ysong            ###   ########.fr       */
+/*   Updated: 2021/09/04 14:12:12 by ysong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 typedef struct s_cmd
 {
-	char *cmd;
-	char *options;
+	char *commend;
+	char *buff;
 }				t_cmd;
 
 
@@ -40,4 +40,8 @@ typedef struct s_data
 t_data		*parse_data(char *input);
 void		show_prompt(void);
 void		handle_signal(int signo);
+void		run_commend(t_data *data, char **env);
+void 		run_echo(t_data *data, char **env);
+void		run_env(char **env);
+void		run_pwd(void);
 #endif
